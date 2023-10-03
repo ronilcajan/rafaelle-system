@@ -1,3 +1,9 @@
+@php
+    use App\Models\System;
+    
+    $systems = System::get();
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -27,11 +33,6 @@
                     <a href="{{ route('login') }}"
                         class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
                         in</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                    @endif
                 @endauth
             </div>
         @endif
@@ -43,32 +44,23 @@
 
             <div class="mt-16 ">
                 <div class="grid w-full gap-6 md:grid-cols-2 justify-center">
-                    <div class="text-center max-w-sm p-6">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-green-600">BOOKING
-                            SYSTEM</h5>
-                        <div class="flex justify-center">
-                            <x-application-logo src="{{ asset('img/logo1.png') }}" width="200"
-                                class="text-center"></x-application-logo>
-                        </div>
+                    @foreach ($systems as $system)
+                        <div class="text-center max-w-sm p-6">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-green-600">
+                                {{ strtoupper($system->system_name) }}</h5>
+                            <div class="flex justify-center">
+                                <x-application-logo
+                                    src="{{ $system->logo ? asset('storage/' . $system->logo) : asset('img/logo1.png') }}"
+                                    width="200" class="text-center"></x-application-logo>
+                            </div>
 
-                        <a href="https://bookings.rafaelgateway.com"
-                            class="inline-flex items-center px-3 py-2 mt-3 text-sm font-medium text-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                            SIGN IN
-                        </a>
-                    </div>
-                    <div class="text-center max-w-sm p-6">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-green-600">RENTAL
-                            SYSTEM</h5>
-                        <div class="flex justify-center">
-                            <x-application-logo src="{{ asset('img/logo1.png') }}" width="200"
-                                class="text-center"></x-application-logo>
+                            <a href="{{ $system->system_url }}"
+                                class="inline-flex items-center px-3 py-2 mt-3 text-sm font-medium text-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                {{ $system->publish ? 'SIGN IN' : 'COMING SOON!' }}
+                            </a>
                         </div>
+                    @endforeach
 
-                        <a href="#"
-                            class="inline-flex items-center px-3 py-2 mt-3 text-sm font-medium text-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                            COMING SOON
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
