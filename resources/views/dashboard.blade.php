@@ -12,8 +12,8 @@
                     System</x-primary-button>
             </div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 ">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 System name
@@ -34,7 +34,7 @@
                     </thead>
                     <tbody>
                         @forelse ($systems  as $system)
-                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                            <tr class="bg-white border-b ">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $system->system_name }}
@@ -46,20 +46,19 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <a href="{{ $system->system_url }}"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                                        class="font-medium text-blue-600  hover:underline">View</a>
 
                                 </td>
                                 <td class="px-6 py-4">
                                     <span
-                                        class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                                        class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
                                         {{ $system->publish ? 'Publish' : 'Coming Soon' }}</span>
 
                                 </td>
                                 <td class="px-6 py-4">
                                     <button data-id="{{ $system->id }}" data-name="{{ $system->system_name }}"
                                         data-url="{{ $system->system_url }}" data-publish="{{ $system->publish }}"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2"
-                                        x-data=""
+                                        class="font-medium text-blue-600 hover:underline mr-2" x-data=""
                                         x-on:click.prevent="$dispatch('open-modal', 'edit-system')"
                                         onclick="editSystem(this)">Edit</button>
                                     <form method="POST" action="{{ route('system.delete') }}" id="deleteForm">
@@ -73,9 +72,9 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                            <tr class="bg-white border-b">
                                 <th scope="row" colspan="5"
-                                    class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     No data Retrieved!
                                 </th>
                             </tr>

@@ -31,8 +31,7 @@
         @if (session('status'))
             <div class="py-4 px-2">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="p-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
-                        role="alert">
+                    <div class="p-4 text-sm text-green-800 rounded-lg bg-green-50 " role="alert">
                         <span class="font-medium">Success!</span> {{ session('status') }}
                     </div>
                 </div>
