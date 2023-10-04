@@ -33,4 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('/link', function () {
+    $targetFolder = base_path().'/storage/app/public'; 
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage'; 
+    symlink($targetFolder, $linkFolder);
+});
+
 require __DIR__.'/auth.php';

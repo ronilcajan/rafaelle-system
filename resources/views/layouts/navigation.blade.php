@@ -82,6 +82,10 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <<<<<<< HEAD=======<x-dropdown-link :href="url('/')">
+                {{ __('Frontend') }}
+                </x-dropdown-link>
+                >>>>>>> dc902e64655fac465f639b1a6d8affb3df26be8e
         </div>
 
         <!-- Responsive Settings Options -->
